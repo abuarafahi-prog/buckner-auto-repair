@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buckner Auto Repair — Dallas, TX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #D62B2B; --red-dark: #A81E1E;
+  --black: #0A0A0A; --dark: #111111; --surface: #181818; --card: #1E1E1E;
+  --border: rgba(255,255,255,0.07); --border-accent: rgba(214,43,43,0.4);
+  --text: #F0EDE8; --muted: #888580; --steel: #C8C2BA;
+  --font-display: 'Barlow Condensed', sans-serif; --font-body: 'Barlow', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 72px; background: rgba(10,10,10,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: var(--font-display); font-weight: 900; font-size: 22px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.nav-logo span { color: var(--red); }
+.logo-icon { width: 36px; height: 36px; background: var(--red); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.logo-icon svg { width: 20px; height: 20px; fill: white; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a { font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta { background: var(--red) !important; color: white !important; padding: 10px 20px; border-radius: 3px; }
+.nav-cta:hover { background: var(--red-dark) !important; }
+.admin-trigger-btn { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--muted); font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; border-radius: 3px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+.admin-trigger-btn:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+.admin-trigger-btn .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 5vw 8vh; position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(214,43,43,0.08) 0%, transparent 60%), linear-gradient(160deg, #0A0A0A 0%, #141414 50%, #0A0A0A 100%); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%); }
+.hero-badge { position: relative; display: inline-flex; align-items: center; gap: 8px; background: rgba(214,43,43,0.1); border: 1px solid var(--border-accent); padding: 6px 14px; border-radius: 2px; font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; width: fit-content; }
+.hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 2s infinite; }
+.hero h1 { position: relative; font-family: var(--font-display); font-weight: 900; font-size: clamp(52px, 9vw, 110px); line-height: 0.9; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 1.5rem; max-width: 900px; }
+.hero h1 em { font-style: normal; color: var(--red); display: block; }
+.hero-sub { position: relative; font-size: 18px; font-weight: 300; color: var(--steel); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.7; }
+.hero-actions { position: relative; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.btn-primary { background: var(--red); color: white; font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 32px; border: none; border-radius: 3px; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--text); font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 15px 32px; border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; cursor: pointer; text-decoration: none; transition: border-color 0.2s, transform 0.15s; display: inline-block; }
+.btn-outline:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-1px); }
+.hero-stats { position: absolute; right: 5vw; bottom: 8vh; display: flex; flex-direction: column; gap: 2rem; text-align: right; }
+.stat-num { font-family: var(--font-display); font-weight: 800; font-size: 42px; line-height: 1; color: var(--text); }
+.stat-num span { color: var(--red); }
+.stat-label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+/* TICKER */
+.ticker { background: var(--red); padding: 12px 0; overflow: hidden; white-space: nowrap; }
+.ticker-inner { display: inline-flex; animation: ticker 25s linear infinite; }
+.ticker-item { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.9); padding: 0 3rem; }
+.ticker-dot { color: rgba(255,255,255,0.4); margin: 0 1rem; }
+@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* SECTIONS */
+section { padding: 6rem 5vw; }
+.section-label { font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+.section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--red); opacity: 0.5; }
+h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(36px, 5vw, 60px); text-transform: uppercase; line-height: 0.95; letter-spacing: -0.01em; }
+
+/* ABOUT */
+.about { background: var(--dark); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+.about-visual { position: relative; }
+.about-img-block { background: var(--card); border: 1px solid var(--border); border-radius: 4px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.about-img-block::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(214,43,43,0.1) 0%, transparent 50%), repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.01) 10px, rgba(255,255,255,0.01) 11px); }
+.wrench-icon { opacity: 0.15; }
+.about-accent { position: absolute; bottom: -20px; right: -20px; background: var(--red); padding: 1.5rem 2rem; border-radius: 3px; }
+.about-accent p { font-family: var(--font-display); font-weight: 900; font-size: 28px; line-height: 1; color: white; }
+.about-accent small { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+.about-text h2 { margin-bottom: 1.5rem; }
+.about-text p { color: var(--steel); font-weight: 300; line-height: 1.8; margin-bottom: 1rem; }
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.feature-item { display: flex; align-items: flex-start; gap: 10px; }
+.feature-dot { width: 6px; height: 6px; background: var(--red); border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+.feature-item span { font-size: 14px; font-weight: 500; color: var(--steel); }
+
+/* SERVICES */
+.services { background: var(--black); }
+.services-header { max-width: 1200px; margin: 0 auto 3rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; }
+.services-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+.service-card { background: var(--surface); padding: 2.5rem 2rem; position: relative; transition: background 0.25s; overflow: hidden; }
+.service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
+.service-card:hover { background: var(--card); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon { width: 48px; height: 48px; background: rgba(214,43,43,0.1); border: 1px solid var(--border-accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 22px; }
+.service-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.75rem; color: var(--text); }
+.service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.service-num { position: absolute; top: 1.5rem; right: 1.5rem; font-family: var(--font-display); font-weight: 800; font-size: 48px; color: rgba(255,255,255,0.04); line-height: 1; }
+
+/* WHY */
+.why { background: var(--dark); }
+.why-inner { max-width: 1200px; margin: 0 auto; }
+.why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 3rem; }
+.why-card { text-align: center; padding: 2.5rem 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; transition: border-color 0.25s, transform 0.25s; }
+.why-card:hover { border-color: var(--border-accent); transform: translateY(-4px); }
+.why-emoji { font-size: 32px; margin-bottom: 1rem; display: block; }
+.why-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+.why-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* REVIEWS */
+.reviews { background: var(--black); }
+.reviews-inner { max-width: 1200px; margin: 0 auto; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+.review-card { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 2rem; position: relative; }
+.review-card::before { content: '"'; position: absolute; top: 1.5rem; right: 1.5rem; font-family: Georgia,serif; font-size: 80px; line-height: 1; color: rgba(214,43,43,0.1); }
+.stars { color: #F0B429; font-size: 14px; margin-bottom: 1rem; letter-spacing: 2px; }
+.review-card p { font-size: 15px; color: var(--steel); line-height: 1.7; margin-bottom: 1.5rem; font-weight: 300; }
+.reviewer { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border); padding-top: 1rem; }
+.reviewer-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 14px; color: white; flex-shrink: 0; }
+.reviewer-name { font-weight: 500; font-size: 14px; color: var(--text); }
+.reviewer-meta { font-size: 12px; color: var(--muted); }
+
+/* BOOKING */
+.booking { background: var(--dark); position: relative; overflow: hidden; }
+.booking::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--red), transparent); }
+.booking-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+.booking-form { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem; }
+.form-title { font-family: var(--font-display); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.form-row { margin-bottom: 1.25rem; }
+.form-row label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.form-row input, .form-row select, .form-row textarea { width: 100%; background: var(--black); border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; color: var(--text); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s; appearance: none; }
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: rgba(214,43,43,0.5); }
+.form-row textarea { resize: vertical; min-height: 90px; }
+.form-row select option { background: #111; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.booking-info h2 { margin-bottom: 1.5rem; }
+.booking-info > p { color: var(--steel); font-weight: 300; line-height: 1.8; margin-bottom: 2rem; }
+.contact-items { display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-item { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; transition: border-color 0.2s; color: var(--text); }
+.contact-item:hover { border-color: var(--border-accent); }
+.contact-icon { width: 44px; height: 44px; background: rgba(214,43,43,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.contact-item-text .label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.contact-item-text .value { font-weight: 500; font-size: 15px; color: var(--text); }
+
+/* FOOTER */
+footer { background: var(--black); border-top: 1px solid var(--border); padding: 3rem 5vw; }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+.footer-logo { font-family: var(--font-display); font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text); }
+.footer-logo span { color: var(--red); }
+.footer-copy { font-size: 13px; color: var(--muted); }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+
+/* ANIMATIONS */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in:nth-child(1){transition-delay:0s} .fade-in:nth-child(2){transition-delay:.1s} .fade-in:nth-child(3){transition-delay:.2s} .fade-in:nth-child(4){transition-delay:.3s} .fade-in:nth-child(5){transition-delay:.4s} .fade-in:nth-child(6){transition-delay:.5s}
+
+/* RESPONSIVE */
+@media(max-width:900px){ .nav-links{display:none} .about-grid,.booking-inner{grid-template-columns:1fr;gap:2.5rem} .services-grid,.reviews-grid{grid-template-columns:1fr 1fr} .why-grid{grid-template-columns:1fr 1fr} .hero-stats{display:none} .form-grid{grid-template-columns:1fr} }
+@media(max-width:600px){ .services-grid,.reviews-grid,.why-grid{grid-template-columns:1fr} h2{font-size:32px} }
+
+/* ═══════════════════════════════════════════
+   ADMIN OVERLAY
+═══════════════════════════════════════════ */
+#admin-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+}
+#admin-overlay.open { display: flex; }
+
+#admin-panel {
+  width: 100%; max-width: 1100px;
+  margin: auto;
+  background: #0f0f0f;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  max-height: 92vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Admin Login */
+#ap-login { padding: 3rem 2rem; max-width: 380px; margin: auto; width: 100%; }
+.ap-logo { font-family: var(--font-display); font-weight: 900; font-size: 26px; text-transform: uppercase; letter-spacing: 0.06em; text-align: center; margin-bottom: 0.25rem; }
+.ap-logo span { color: var(--red); }
+.ap-sub { text-align: center; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2rem; }
+.ap-field { margin-bottom: 1rem; }
+.ap-field label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.ap-field input { width: 100%; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.08); border-radius: 3px; padding: 11px 14px; color: var(--text); font-family: var(--font-body); font-size: 14px; outline: none; transition: border-color 0.2s; }
+.ap-field input:focus { border-color: rgba(214,43,43,0.5); }
+.ap-btn { width: 100%; margin-top: 1.25rem; background: var(--red); color: white; border: none; font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px; border-radius: 3px; cursor: pointer; transition: background 0.2s; }
+.ap-btn:hover { background: var(--red-dark); }
+.ap-err { color: var(--red); font-size: 13px; text-align: center; margin-top: 0.75rem; min-height: 18px; }
+
+/* Admin Shell */
+#ap-shell { display: none; flex-direction: column; height: 100%; }
+.ap-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); background: #0a0a0a; border-radius: 8px 8px 0 0; flex-shrink: 0; flex-wrap: wrap; gap: 0.75rem; }
+.ap-header-left { display: flex; align-items: center; gap: 1rem; }
+.ap-title { font-family: var(--font-display); font-weight: 800; font-size: 18px; text-transform: uppercase; letter-spacing: 0.06em; }
+.ap-title span { color: var(--red); }
+.ap-user-badge { background: rgba(214,43,43,0.1); border: 1px solid var(--border-accent); color: #e08080; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+.ap-new-badge { background: var(--red); color: white; font-family: var(--font-display); font-weight: 700; font-size: 12px; padding: 3px 10px; border-radius: 20px; }
+.ap-header-right { display: flex; align-items: center; gap: 0.75rem; }
+.ap-close-btn, .ap-logout-btn { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--muted); font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 3px; cursor: pointer; transition: all 0.2s; }
+.ap-close-btn:hover, .ap-logout-btn:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+
+/* Admin Tabs */
+.ap-tabs { display: flex; border-bottom: 1px solid rgba(255,255,255,0.07); flex-shrink: 0; }
+.ap-tab { background: transparent; border: none; border-bottom: 2px solid transparent; color: var(--muted); font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 1rem 1.5rem; cursor: pointer; transition: all 0.2s; margin-bottom: -1px; }
+.ap-tab:hover { color: var(--text); }
+.ap-tab.active { color: var(--text); border-bottom-color: var(--red); }
+
+/* Tab content */
+.ap-tab-content { display: none; padding: 1.5rem; overflow-y: auto; }
+.ap-tab-content.active { display: block; }
+
+/* Stats */
+.ap-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.ap-stat { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; padding: 1rem 1.25rem; }
+.ap-stat .sn { font-family: var(--font-display); font-weight: 800; font-size: 32px; line-height: 1; margin-bottom: 4px; }
+.ap-stat .sl { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.sn-red{color:var(--red)} .sn-amber{color:#f0c040} .sn-green{color:#6fcf97}
+
+/* Filter bar */
+.ap-toolbar { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.ap-toolbar-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; text-transform: uppercase; flex: 1; min-width: 120px; }
+.ap-filter { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.07); color: var(--muted); font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 14px; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
+.ap-filter:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
+.ap-filter.active { background: var(--red); border-color: var(--red); color: white; }
+.ap-clear { background: transparent; border: 1px solid rgba(214,43,43,0.3); color: #c06060; font-family: var(--font-display); font-weight: 600; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 14px; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
+.ap-clear:hover { background: rgba(214,43,43,0.08); color: var(--red); }
+
+/* Booking cards */
+.bk-card { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; padding: 1.25rem; display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; margin-bottom: 10px; transition: border-color 0.2s; }
+.bk-card:hover { border-color: rgba(255,255,255,0.12); }
+.bk-card.s-new { border-left: 3px solid var(--red); }
+.bk-card.s-confirmed { border-left: 3px solid #f0c040; }
+.bk-card.s-done { border-left: 3px solid #6fcf97; }
+.bk-top { display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.bk-name { font-family: var(--font-display); font-weight: 700; font-size: 18px; text-transform: uppercase; letter-spacing: 0.04em; }
+.bk-tag { background: rgba(214,43,43,0.12); border: 1px solid rgba(214,43,43,0.3); color: #e08080; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
+.bk-meta { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-bottom: 0.5rem; }
+.bk-mi { display: flex; flex-direction: column; }
+.bk-mi .ml { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.bk-mi .mv { font-size: 13px; font-weight: 500; color: var(--steel); }
+.bk-mi a { color: inherit; text-decoration: none; }
+.bk-notes { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 3px; padding: 7px 10px; font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 0.4rem; }
+.bk-time { font-size: 11px; color: var(--muted); margin-top: 5px; }
+.bk-actions { display: flex; flex-direction: column; gap: 7px; min-width: 120px; }
+.bk-select { width: 100%; background: #111; border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; padding: 7px 8px; color: var(--text); font-family: var(--font-body); font-size: 12px; outline: none; cursor: pointer; }
+.bk-select option { background: #111; }
+.bk-del { width: 100%; background: transparent; border: 1px solid rgba(214,43,43,0.2); color: #b06060; font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
+.bk-del:hover { background: rgba(214,43,43,0.1); border-color: var(--red); color: var(--red); }
+
+/* Empty state */
+.ap-empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+.ap-empty .ei { font-size: 40px; margin-bottom: 0.75rem; opacity: 0.4; }
+.ap-empty h3 { font-family: var(--font-display); font-size: 20px; text-transform: uppercase; margin-bottom: 0.4rem; color: var(--steel); }
+.ap-empty p { font-size: 13px; }
+
+/* ── EMPLOYEES TAB ── */
+.emp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem; }
+.emp-title { font-family: var(--font-display); font-weight: 700; font-size: 18px; text-transform: uppercase; }
+.emp-add-btn { background: var(--red); color: white; border: none; font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: 3px; cursor: pointer; transition: background 0.2s; }
+.emp-add-btn:hover { background: var(--red-dark); }
+.emp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1rem; }
+.emp-card { background: #1a1a1a; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; padding: 1.25rem; }
+.emp-card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+.emp-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 16px; color: white; flex-shrink: 0; }
+.emp-info .en { font-weight: 600; font-size: 15px; color: var(--text); }
+.emp-info .eu { font-size: 12px; color: var(--muted); font-family: monospace; }
+.emp-role-badge { display: inline-block; padding: 2px 8px; border-radius: 2px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.emp-role-badge.admin { background: rgba(214,43,43,0.15); border: 1px solid rgba(214,43,43,0.3); color: #e08080; }
+.emp-role-badge.employee { background: rgba(100,150,255,0.1); border: 1px solid rgba(100,150,255,0.25); color: #90b0f0; }
+.emp-actions { display: flex; gap: 0.5rem; }
+.emp-edit-btn { flex: 1; background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--muted); font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
+.emp-edit-btn:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+.emp-del-btn { flex: 1; background: transparent; border: 1px solid rgba(214,43,43,0.2); color: #b06060; font-family: var(--font-display); font-weight: 600; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px; border-radius: 3px; cursor: pointer; transition: all 0.15s; }
+.emp-del-btn:hover { background: rgba(214,43,43,0.1); border-color: var(--red); color: var(--red); }
+
+/* Modal */
+.ap-modal-bg { display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.75); align-items: center; justify-content: center; }
+.ap-modal-bg.open { display: flex; }
+.ap-modal { background: #141414; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 2rem; width: 100%; max-width: 420px; }
+.ap-modal h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.ap-modal-actions { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
+.ap-modal-actions button { flex: 1; padding: 11px; border-radius: 3px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; border: none; transition: background 0.2s; }
+.ap-modal-save { background: var(--red); color: white; }
+.ap-modal-save:hover { background: var(--red-dark); }
+.ap-modal-cancel { background: #2a2a2a; color: var(--muted); }
+.ap-modal-cancel:hover { background: #333; }
+.ap-modal-err { color: var(--red); font-size: 12px; margin-top: 0.5rem; min-height: 16px; }
+
+@media(max-width:700px){ .ap-stats{grid-template-columns:1fr 1fr} .bk-card{grid-template-columns:1fr} .bk-actions{flex-direction:row} }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     MAIN WEBSITE
+══════════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+    </div>
+    Buckner <span>Auto Repair</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+    <li>
+      <button class="admin-trigger-btn" onclick="openAdmin()">
+        <span class="dot"></span> Staff Login
+      </button>
+    </li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-badge">Now Serving Dallas, TX</div>
+  <h1>Buckner<em>Auto Repair</em>You Can Trust.</h1>
+  <p class="hero-sub">Expert diagnostics, honest pricing, and fast turnaround. Buckner Auto Repair has been keeping Dallas drivers on the road since 2008.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Schedule Service</a>
+    <a href="tel:+14692915557" class="btn-outline">Call (469) 291-5557</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-num">15<span>+</span></div><div class="stat-label">Years in Business</div></div>
+    <div class="stat-item"><div class="stat-num">4.2<span>★</span></div><div class="stat-label">Google Rating</div></div>
+    <div class="stat-item"><div class="stat-num">8k<span>+</span></div><div class="stat-label">Cars Repaired</div></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-inner">
+  <span class="ticker-item">Engine Repair</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Oil Changes</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Brake Service</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Transmission</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">A/C Repair</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Tire Service</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Diagnostics</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Suspension</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Exhaust Systems</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">State Inspection</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Engine Repair</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Oil Changes</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Brake Service</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Transmission</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">A/C Repair</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Tire Service</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Diagnostics</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Suspension</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">Exhaust Systems</span><span class="ticker-dot">◆</span>
+  <span class="ticker-item">State Inspection</span><span class="ticker-dot">◆</span>
+</div></div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-img-block">
+        <svg class="wrench-icon" width="160" height="160" viewBox="0 0 24 24" fill="white"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+      </div>
+      <div class="about-accent"><p>15+</p><small>Years Serving Dallas</small></div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">About Us</div>
+      <h2>Built on<br>Honesty &<br>Expertise</h2>
+      <p>Buckner Auto Repair was founded with one goal: give Dallas drivers a shop they can actually trust. No runaround, no hidden fees — just straight talk and quality work.</p>
+      <p>Our ASE-certified technicians have seen it all. From routine oil changes to complex engine rebuilds, we treat every car like it's our own.</p>
+      <div class="about-features">
+        <div class="feature-item"><div class="feature-dot"></div><span>ASE Certified Techs</span></div>
+        <div class="feature-item"><div class="feature-dot"></div><span>Free Estimates</span></div>
+        <div class="feature-item"><div class="feature-dot"></div><span>12-Month Warranty</span></div>
+        <div class="feature-item"><div class="feature-dot"></div><span>OEM & Quality Parts</span></div>
+        <div class="feature-item"><div class="feature-dot"></div><span>Most Makes & Models</span></div>
+        <div class="feature-item"><div class="feature-dot"></div><span>Same-Day Service</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div><div class="section-label">What We Do</div><h2>Full-Service<br>Auto Repair</h2></div>
+    <a href="#contact" class="btn-outline">Get a Quote →</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in"><div class="service-icon">🔧</div><div class="service-num">01</div><h3>Engine Diagnostics</h3><p>Advanced computer diagnostics to pinpoint exactly what's wrong — fast, accurate, no guessing.</p></div>
+    <div class="service-card fade-in"><div class="service-icon">🛢️</div><div class="service-num">02</div><h3>Oil & Fluids</h3><p>Quick oil changes and full fluid checks. We use quality oil and filters to protect your engine.</p></div>
+    <div class="service-card fade-in"><div class="service-icon">🛑</div><div class="service-num">03</div><h3>Brake Service</h3><p>Pads, rotors, calipers, and brake fluid. We inspect the full system and give you the honest picture.</p></div>
+    <div class="service-card fade-in"><div class="service-icon">❄️</div><div class="service-num">04</div><h3>A/C & Heating</h3><p>Dallas summers are brutal. We recharge systems, fix leaks, and replace compressors — fast.</p></div>
+    <div class="service-card fade-in"><div class="service-icon">⚙️</div><div class="service-num">05</div><h3>Transmission</h3><p>From fluid flushes to full rebuilds, our transmission specialists handle automatics and manuals.</p></div>
+    <div class="service-card fade-in"><div class="service-icon">🔩</div><div class="service-num">06</div><h3>Suspension & Steering</h3><p>Shocks, struts, tie rods, and alignments. We restore ride quality and control to your vehicle.</p></div>
+    <div class="service-card fade-in"><div class="service-icon">🔋</div><div class="service-num">07</div><h3>Electrical & Battery</h3><p>Battery testing, alternators, starters, and wiring — we trace faults with professional equipment.</p></div>
+    <div class="service-card fade-in"><div class="service-icon">🏁</div><div class="service-num">08</div><h3>TX State Inspection</h3><p>We're a licensed Texas state inspection station. In and out — no hassle, no appointment needed.</p></div>
+    <div class="service-card fade-in"><div class="service-icon">🛞</div><div class="service-num">09</div><h3>Tires & Wheels</h3><p>Tire sales, mounting, balancing, rotation, and flat repair. TPMS reset and wheel alignments too.</p></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="why-inner">
+    <div class="section-label">Why Buckner</div>
+    <h2>The Buckner<br>Difference</h2>
+    <div class="why-grid">
+      <div class="why-card fade-in"><span class="why-emoji">🏆</span><h3>ASE Certified</h3><p>All our mechanics hold current ASE certifications and receive ongoing training on new vehicles.</p></div>
+      <div class="why-card fade-in"><span class="why-emoji">💬</span><h3>Honest Quotes</h3><p>You approve every repair before we touch it. No surprises on your bill — ever.</p></div>
+      <div class="why-card fade-in"><span class="why-emoji">⚡</span><h3>Fast Turnaround</h3><p>Most repairs completed same day. We know you need your car — we move with urgency.</p></div>
+      <div class="why-card fade-in"><span class="why-emoji">🛡️</span><h3>12-Mo Warranty</h3><p>All parts and labor come with a 12-month/12,000-mile warranty. Drive with confidence.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-inner">
+    <div class="section-label">Customer Reviews</div>
+    <h2>What Dallas<br>Drivers Say</h2>
+    <div class="reviews-grid">
+      <div class="review-card fade-in"><div class="stars">★★★★★</div><p>Brought my F-150 in with a mystery check engine light. They diagnosed it in 30 minutes, explained everything clearly, and had it fixed by end of day. Prices were completely fair.</p><div class="reviewer"><div class="reviewer-avatar">MR</div><div><div class="reviewer-name">Marcus R.</div><div class="reviewer-meta">Dallas, TX · Google Review</div></div></div></div>
+      <div class="review-card fade-in"><div class="stars">★★★★★</div><p>I've been going to Buckner Auto for 4 years. They've never upsold me on anything I didn't need. The whole team is professional, and the shop is always clean. Highly recommend.</p><div class="reviewer"><div class="reviewer-avatar">TJ</div><div><div class="reviewer-name">Tanya J.</div><div class="reviewer-meta">Dallas, TX · Google Review</div></div></div></div>
+      <div class="review-card fade-in"><div class="stars">★★★★★</div><p>My A/C went out in July. Called Buckner and they got me in the same afternoon. Fixed the compressor and had me back in cold air by 4pm. Lifesavers in the Texas heat!</p><div class="reviewer"><div class="reviewer-avatar">DL</div><div><div class="reviewer-name">Derek L.</div><div class="reviewer-meta">Dallas, TX · Google Review</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="contact">
+  <div class="booking-inner">
+    <div class="booking-info">
+      <div class="section-label">Get In Touch</div>
+      <h2>Schedule Your<br>Service Today</h2>
+      <p>Drop off your vehicle or fill out the form and we'll reach out to confirm your appointment. Walk-ins welcome.</p>
+      <div class="contact-items">
+        <a href="tel:+14692915557" class="contact-item"><div class="contact-icon">📞</div><div class="contact-item-text"><div class="label">Phone</div><div class="value">(469) 291-5557</div></div></a>
+        <a href="mailto:autorepairbuckner@gmail.com" class="contact-item"><div class="contact-icon">✉️</div><div class="contact-item-text"><div class="label">Email</div><div class="value">autorepairbuckner@gmail.com</div></div></a>
+        <a href="https://www.google.com/maps/search/3827+Buckner+Blvd+Dallas+TX+75227" class="contact-item" target="_blank" rel="noopener"><div class="contact-icon">📍</div><div class="contact-item-text"><div class="label">Location</div><div class="value">3827 Buckner Blvd, Dallas, TX 75227</div></div></a>
+        <div class="contact-item" style="cursor:default;"><div class="contact-icon">🕐</div><div class="contact-item-text"><div class="label">Hours</div><div class="value" style="font-size:13px;line-height:1.7;">Mon–Sat &nbsp;9 AM – 7 PM<br>Sun &nbsp;10 AM – 5 PM</div></div></div>
+      </div>
+    </div>
+    <div class="booking-form">
+      <div class="form-title">Book an Appointment</div>
+      <div class="form-grid">
+        <div class="form-row"><label>First Name</label><input id="f-firstname" type="text" placeholder="John"></div>
+        <div class="form-row"><label>Last Name</label><input id="f-lastname" type="text" placeholder="Smith"></div>
+      </div>
+      <div class="form-row"><label>Phone Number</label><input id="f-phone" type="tel" placeholder="(469) 555-0000"></div>
+      <div class="form-row"><label>Email Address</label><input id="f-email" type="email" placeholder="you@email.com"></div>
+      <div class="form-grid">
+        <div class="form-row"><label>Vehicle Year</label><input id="f-year" type="text" placeholder="2019"></div>
+        <div class="form-row"><label>Make & Model</label><input id="f-model" type="text" placeholder="Toyota Camry"></div>
+      </div>
+      <div class="form-row">
+        <label>Service Needed</label>
+        <select id="f-service">
+          <option value="" disabled selected>Select a service…</option>
+          <option>Engine Diagnostics</option><option>Oil Change</option><option>Brake Service</option>
+          <option>A/C &amp; Heating</option><option>Transmission Service</option>
+          <option>Suspension &amp; Steering</option><option>Electrical / Battery</option>
+          <option>TX State Inspection</option><option>Tire Service</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-row"><label>Additional Notes</label><textarea id="f-notes" placeholder="Describe the issue or any symptoms…"></textarea></div>
+      <p id="form-msg" style="font-size:13px;min-height:18px;margin-bottom:10px;"></p>
+      <button class="btn-primary" style="width:100%;font-size:14px;padding:14px;" onclick="handleSubmit(this)">Request Appointment</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Buckner <span>Auto Repair</span></div>
+    <p class="footer-copy">© 2025 Buckner Auto Repair · Dallas, TX · All Rights Reserved</p>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════
+     ADMIN OVERLAY (embedded in page)
+══════════════════════════════════ -->
+<div id="admin-overlay" onclick="overlayClick(event)">
+  <div id="admin-panel">
+
+    <!-- LOGIN -->
+    <div id="ap-login">
+      <div class="ap-logo">Buckner <span>Auto Repair</span></div>
+      <div class="ap-sub">Staff Portal</div>
+      <div class="ap-field"><label>Username</label><input id="ap-user" type="text" placeholder="Enter username" autocomplete="username"></div>
+      <div class="ap-field"><label>Password</label><input id="ap-pass" type="password" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')apLogin()"></div>
+      <button class="ap-btn" onclick="apLogin()">Sign In</button>
+      <p class="ap-err" id="ap-err"></p>
+    </div>
+
+    <!-- SHELL (shown after login) -->
+    <div id="ap-shell">
+      <div class="ap-header">
+        <div class="ap-header-left">
+          <div class="ap-title">Buckner <span>Auto Repair</span> — Admin</div>
+          <span class="ap-user-badge" id="ap-who"></span>
+          <span class="ap-new-badge" id="ap-new-badge" style="display:none;"></span>
+        </div>
+        <div class="ap-header-right">
+          <button class="ap-logout-btn" onclick="apLogout()">Sign Out</button>
+          <button class="ap-close-btn" onclick="closeAdmin()">✕ Close</button>
+        </div>
+      </div>
+
+      <div class="ap-tabs" id="ap-tabs">
+        <button class="ap-tab active" onclick="apTab('bookings',this)">📋 Bookings</button>
+        <button class="ap-tab" id="ap-emp-tab" onclick="apTab('employees',this)" style="display:none;">👥 Employees</button>
+      </div>
+
+      <!-- BOOKINGS TAB -->
+      <div class="ap-tab-content active" id="tab-bookings">
+        <div class="ap-stats">
+          <div class="ap-stat"><div class="sn" id="st-total">0</div><div class="sl">Total</div></div>
+          <div class="ap-stat"><div class="sn sn-red" id="st-new">0</div><div class="sl">New</div></div>
+          <div class="ap-stat"><div class="sn sn-amber" id="st-confirmed">0</div><div class="sl">Confirmed</div></div>
+          <div class="ap-stat"><div class="sn sn-green" id="st-done">0</div><div class="sl">Completed</div></div>
+        </div>
+        <div class="ap-toolbar">
+          <div class="ap-toolbar-title">Requests</div>
+          <button class="ap-filter active" onclick="apFilter('all',this)">All</button>
+          <button class="ap-filter" onclick="apFilter('new',this)">New</button>
+          <button class="ap-filter" onclick="apFilter('confirmed',this)">Confirmed</button>
+          <button class="ap-filter" onclick="apFilter('done',this)">Completed</button>
+          <button class="ap-clear" onclick="apClearDone()">Clear Completed</button>
+        </div>
+        <div id="ap-bk-list"></div>
+      </div>
+
+      <!-- EMPLOYEES TAB -->
+      <div class="ap-tab-content" id="tab-employees">
+        <div class="emp-header">
+          <div class="emp-title">Staff Accounts</div>
+          <button class="emp-add-btn" onclick="openEmpModal(null)">+ Add Employee</button>
+        </div>
+        <div class="emp-grid" id="emp-grid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMPLOYEE MODAL -->
+<div class="ap-modal-bg" id="emp-modal">
+  <div class="ap-modal">
+    <h3 id="emp-modal-title">Add Employee</h3>
+    <input type="hidden" id="em-id">
+    <div class="ap-field"><label>Full Name</label><input id="em-name" type="text" placeholder="Jane Doe"></div>
+    <div class="ap-field"><label>Username</label><input id="em-username" type="text" placeholder="janedoe"></div>
+    <div class="ap-field"><label>Password</label><input id="em-pass" type="password" placeholder="••••••••"></div>
+    <div class="ap-field">
+      <label>Role</label>
+      <select id="em-role" style="width:100%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.08);border-radius:3px;padding:11px 14px;color:#F0EDE8;font-size:14px;outline:none;appearance:none;">
+        <option value="employee">Employee</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+    <p class="ap-modal-err" id="em-err"></p>
+    <div class="ap-modal-actions">
+      <button class="ap-modal-cancel" onclick="closeEmpModal()">Cancel</button>
+      <button class="ap-modal-save" onclick="saveEmployee()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════
+// DATA HELPERS
+// ══════════════════════════════════════════════════════
+const LS_BOOKINGS = 'bar_bookings';
+const LS_EMPLOYEES = 'bar_employees';
+const LS_SESSION = 'bar_session';
+
+function getBookings(){ try{ return JSON.parse(localStorage.getItem(LS_BOOKINGS)||'[]'); }catch{ return []; } }
+function saveBookings(l){ localStorage.setItem(LS_BOOKINGS,JSON.stringify(l)); }
+
+function getEmployees(){
+  try{
+    const stored = JSON.parse(localStorage.getItem(LS_EMPLOYEES)||'null');
+    if(stored) return stored;
+  }catch{}
+  // Default owner account
+  const defaults = [{ id:1, name:'Owner', username:'buckner', password:'autorepair2025', role:'admin' }];
+  localStorage.setItem(LS_EMPLOYEES, JSON.stringify(defaults));
+  return defaults;
+}
+function saveEmployees(l){ localStorage.setItem(LS_EMPLOYEES,JSON.stringify(l)); }
+
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+// ══════════════════════════════════════════════════════
+// PUBLIC BOOKING FORM
+// ══════════════════════════════════════════════════════
+function handleSubmit(btn){
+  const get = id => (document.getElementById(id)||{}).value||'';
+  const firstName=get('f-firstname').trim(), lastName=get('f-lastname').trim();
+  const phone=get('f-phone').trim(), email=get('f-email').trim();
+  const year=get('f-year').trim(), model=get('f-model').trim();
+  const service=get('f-service'), notes=get('f-notes').trim();
+  const msg=document.getElementById('form-msg');
+
+  if(!firstName||!lastName||!phone||!service){
+    msg.textContent='Please fill in your name, phone, and service needed.';
+    msg.style.color='#D62B2B'; return;
+  }
+  const booking={ id:Date.now(), status:'new',
+    submitted:new Date().toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'}),
+    firstName,lastName,phone,email, vehicle:`${year} ${model}`.trim()||'Not specified', service,notes };
+  const list=getBookings(); list.unshift(booking); saveBookings(list);
+  btn.textContent='✓ Request Sent!'; btn.style.background='#1a6b3a'; btn.disabled=true;
+  msg.textContent="We got it! We'll call you shortly to confirm your appointment."; msg.style.color='#6fcf97';
+  ['f-firstname','f-lastname','f-phone','f-email','f-year','f-model','f-notes'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
+  document.getElementById('f-service').selectedIndex=0;
+}
+
+// ══════════════════════════════════════════════════════
+// SCROLL REVEAL
+// ══════════════════════════════════════════════════════
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);} });
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{ const el=document.querySelector(a.getAttribute('href')); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});} });
+});
+
+// ══════════════════════════════════════════════════════
+// ADMIN OVERLAY
+// ══════════════════════════════════════════════════════
+let currentFilter='all';
+let sessionUser=null;
+
+function openAdmin(){
+  document.getElementById('admin-overlay').classList.add('open');
+  // Check existing session
+  const s=sessionStorage.getItem(LS_SESSION);
+  if(s){ try{ sessionUser=JSON.parse(s); showShell(); }catch{} }
+}
+function closeAdmin(){
+  document.getElementById('admin-overlay').classList.remove('open');
+}
+function overlayClick(e){
+  if(e.target===document.getElementById('admin-overlay')) closeAdmin();
+}
+
+function apLogin(){
+  const u=document.getElementById('ap-user').value.trim();
+  const p=document.getElementById('ap-pass').value;
+  const emps=getEmployees();
+  const match=emps.find(e=>e.username===u && e.password===p);
+  if(match){
+    sessionUser=match;
+    sessionStorage.setItem(LS_SESSION,JSON.stringify(match));
+    document.getElementById('ap-err').textContent='';
+    showShell();
+  } else {
+    document.getElementById('ap-err').textContent='Incorrect username or password.';
+  }
+}
+
+function apLogout(){
+  sessionUser=null; sessionStorage.removeItem(LS_SESSION);
+  document.getElementById('ap-shell').style.display='none';
+  document.getElementById('ap-login').style.display='block';
+  document.getElementById('ap-user').value='';
+  document.getElementById('ap-pass').value='';
+}
+
+function showShell(){
+  document.getElementById('ap-login').style.display='none';
+  document.getElementById('ap-shell').style.display='flex';
+  document.getElementById('ap-who').textContent=sessionUser.name+' ('+sessionUser.role+')';
+  // Show employees tab only for admin
+  const empTab=document.getElementById('ap-emp-tab');
+  empTab.style.display=sessionUser.role==='admin'?'':'none';
+  renderAll();
+}
+
+function apTab(name,btn){
+  document.querySelectorAll('.ap-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.ap-tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+  if(name==='employees') renderEmployees();
+}
+
+// ── BOOKINGS ─────────────────────────────────────────
+function apFilter(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.ap-filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderBookings();
+}
+
+function apUpdateStatus(id,status){
+  const list=getBookings();
+  const b=list.find(x=>x.id===id);
+  if(b){b.status=status;saveBookings(list);renderAll();}
+}
+
+function apDelete(id){
+  if(!confirm('Delete this booking?'))return;
+  saveBookings(getBookings().filter(x=>x.id!==id));
+  renderAll();
+}
+
+function apClearDone(){
+  if(!confirm('Remove all completed bookings?'))return;
+  saveBookings(getBookings().filter(x=>x.status!=='done'));
+  renderAll();
+}
+
+function renderAll(){
+  const list=getBookings();
+  const nc=list.filter(x=>x.status==='new').length;
+  document.getElementById('st-total').textContent=list.length;
+  document.getElementById('st-new').textContent=nc;
+  document.getElementById('st-confirmed').textContent=list.filter(x=>x.status==='confirmed').length;
+  document.getElementById('st-done').textContent=list.filter(x=>x.status==='done').length;
+  const badge=document.getElementById('ap-new-badge');
+  badge.textContent=nc+' New'; badge.style.display=nc>0?'':'none';
+  // Also update nav trigger dot
+  renderBookings();
+}
+
+function renderBookings(){
+  const list=getBookings();
+  const filtered=currentFilter==='all'?list:list.filter(x=>x.status===currentFilter);
+  const c=document.getElementById('ap-bk-list');
+  if(filtered.length===0){
+    c.innerHTML=`<div class="ap-empty"><div class="ei">📋</div><h3>${currentFilter==='all'?'No Bookings Yet':'Nothing Here'}</h3><p>${currentFilter==='all'?'Customer booking requests will appear here.':'No '+currentFilter+' bookings.'}</p></div>`;
+    return;
+  }
+  c.innerHTML=filtered.map((b,i)=>`
+    <div class="bk-card s-${b.status}">
+      <div>
+        <div class="bk-top">
+          <div class="bk-name">${esc(b.firstName)} ${esc(b.lastName)}</div>
+          <div class="bk-tag">${esc(b.service)}</div>
+          ${b.status==='new'?'<div class="bk-tag">NEW</div>':''}
+        </div>
+        <div class="bk-meta">
+          <div class="bk-mi"><span class="ml">Phone</span><span class="mv"><a href="tel:${esc(b.phone)}">${esc(b.phone)}</a></span></div>
+          <div class="bk-mi"><span class="ml">Email</span><span class="mv">${b.email?`<a href="mailto:${esc(b.email)}">${esc(b.email)}</a>`:'—'}</span></div>
+          <div class="bk-mi"><span class="ml">Vehicle</span><span class="mv">${esc(b.vehicle)}</span></div>
+        </div>
+        ${b.notes?`<div class="bk-notes">📝 ${esc(b.notes)}</div>`:''}
+        <div class="bk-time">Submitted ${esc(b.submitted)}</div>
+      </div>
+      <div class="bk-actions">
+        <select class="bk-select" onchange="apUpdateStatus(${b.id},this.value)">
+          <option value="new"       ${b.status==='new'       ?'selected':''}>🔴 New</option>
+          <option value="confirmed" ${b.status==='confirmed' ?'selected':''}>🟡 Confirmed</option>
+          <option value="done"      ${b.status==='done'      ?'selected':''}>🟢 Completed</option>
+        </select>
+        <button class="bk-del" onclick="apDelete(${b.id})">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+// ── EMPLOYEES ─────────────────────────────────────────
+function renderEmployees(){
+  const emps=getEmployees();
+  const grid=document.getElementById('emp-grid');
+  if(emps.length===0){ grid.innerHTML='<p style="color:var(--muted);font-size:14px;">No employees yet.</p>'; return; }
+  grid.innerHTML=emps.map(e=>`
+    <div class="emp-card">
+      <div class="emp-card-top">
+        <div class="emp-avatar">${esc(e.name.slice(0,2).toUpperCase())}</div>
+        <div class="emp-info"><div class="en">${esc(e.name)}</div><div class="eu">@${esc(e.username)}</div></div>
+      </div>
+      <div><span class="emp-role-badge ${e.role}">${e.role==='admin'?'Admin':'Employee'}</span></div>
+      <div class="emp-actions">
+        <button class="emp-edit-btn" onclick="openEmpModal(${e.id})">Edit</button>
+        ${e.id===1?'<button class="emp-del-btn" disabled style="opacity:0.3;cursor:not-allowed;">Owner</button>':`<button class="emp-del-btn" onclick="deleteEmployee(${e.id})">Delete</button>`}
+      </div>
+    </div>`).join('');
+}
+
+function openEmpModal(id){
+  document.getElementById('em-err').textContent='';
+  if(id===null){
+    document.getElementById('emp-modal-title').textContent='Add Employee';
+    document.getElementById('em-id').value='';
+    document.getElementById('em-name').value='';
+    document.getElementById('em-username').value='';
+    document.getElementById('em-pass').value='';
+    document.getElementById('em-role').value='employee';
+  } else {
+    const e=getEmployees().find(x=>x.id===id);
+    if(!e)return;
+    document.getElementById('emp-modal-title').textContent='Edit Employee';
+    document.getElementById('em-id').value=e.id;
+    document.getElementById('em-name').value=e.name;
+    document.getElementById('em-username').value=e.username;
+    document.getElementById('em-pass').value=e.password;
+    document.getElementById('em-role').value=e.role;
+  }
+  document.getElementById('emp-modal').classList.add('open');
+}
+
+function closeEmpModal(){
+  document.getElementById('emp-modal').classList.remove('open');
+}
+
+function saveEmployee(){
+  const id=document.getElementById('em-id').value;
+  const name=document.getElementById('em-name').value.trim();
+  const username=document.getElementById('em-username').value.trim().toLowerCase();
+  const pass=document.getElementById('em-pass').value;
+  const role=document.getElementById('em-role').value;
+  const errEl=document.getElementById('em-err');
+
+  if(!name||!username||!pass){ errEl.textContent='All fields are required.'; return; }
+  if(username.length<3){ errEl.textContent='Username must be at least 3 characters.'; return; }
+  if(pass.length<6){ errEl.textContent='Password must be at least 6 characters.'; return; }
+
+  let emps=getEmployees();
+
+  // Check username taken (excluding current employee being edited)
+  const taken=emps.find(e=>e.username===username && String(e.id)!==String(id));
+  if(taken){ errEl.textContent='That username is already taken.'; return; }
+
+  if(!id){
+    // New employee
+    const newEmp={ id:Date.now(), name, username, password:pass, role };
+    emps.push(newEmp);
+  } else {
+    // Edit
+    const idx=emps.findIndex(e=>String(e.id)===String(id));
+    if(idx>-1) emps[idx]={ ...emps[idx], name, username, password:pass, role };
+  }
+  saveEmployees(emps);
+  closeEmpModal();
+  renderEmployees();
+}
+
+function deleteEmployee(id){
+  if(!confirm('Delete this employee account?'))return;
+  saveEmployees(getEmployees().filter(e=>e.id!==id));
+  renderEmployees();
+}
+
+// Auto-refresh bookings every 30s when panel is open
+setInterval(()=>{ if(document.getElementById('admin-overlay').classList.contains('open') && sessionUser) renderAll(); },30000);
+
+// Re-check session on load
+(function(){ const s=sessionStorage.getItem(LS_SESSION); if(s){try{sessionUser=JSON.parse(s);}catch{}} })();
+</script>
+</body>
+</html>
