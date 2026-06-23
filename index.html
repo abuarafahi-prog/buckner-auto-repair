@@ -109,6 +109,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-cta:hover{background:var(--red-dark)!important}
 .nav-icon-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 12px;border-radius:3px;cursor:pointer;font-family:var(--fd);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:5px;transition:all .2s}
 .nav-icon-btn:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
+.nav-menu-btn{display:none;align-items:center;justify-content:center;background:transparent;border:1px solid var(--border);color:var(--muted);width:44px;height:44px;border-radius:10px;cursor:pointer;font-size:22px;transition:all .2s}
+.nav-menu-btn:hover{border-color:rgba(255,255,255,.25);color:var(--text)}
 .lang-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:5px 9px;border-radius:3px;cursor:pointer;font-family:var(--fd);font-weight:700;font-size:11px;letter-spacing:.06em;transition:all .2s}
 .lang-btn.active{background:var(--red);border-color:var(--red);color:white}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
@@ -492,7 +494,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 5
 
 /* RESPONSIVE */
 @media(max-width:1024px){.ap-stats{grid-template-columns:repeat(3,1fr)}.dashboard-charts{grid-template-columns:1fr}}
-@media(max-width:900px){.nav-links{display:none}.about-grid,.booking-inner{grid-template-columns:1fr;gap:2.5rem}.services-grid,.reviews-grid,.blog-grid{grid-template-columns:1fr 1fr}.why-grid{grid-template-columns:1fr 1fr}.hero-stats{display:none}.form-grid{grid-template-columns:1fr}.schedule-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:900px){.nav-menu-btn{display:flex}.nav-right{position:fixed;top:70px;left:0;right:0;background:rgba(10,10,10,.98);backdrop-filter:blur(12px);flex-direction:column;gap:1rem;padding:1rem 4vw;transform:translateY(-120%);transition:transform .25s ease,opacity .25s ease;opacity:0;pointer-events:none;z-index:200}.nav-open .nav-right{transform:translateY(0);opacity:1;pointer-events:auto}.nav-links{display:flex;flex-direction:column;gap:1rem;width:100%}.nav-links a{font-size:15px;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.08)}.nav-links a.nav-cta{border:none}.nav-right>div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem}.nav-icon-btn,.nav-cust-btn,.lang-btn{width:100%;justify-content:center}.nav-icon-btn{padding:12px 0}.lang-btn{padding:11px 0}.nav-right{border-bottom:1px solid var(--border);padding-bottom:1rem}.about-grid,.booking-inner{grid-template-columns:1fr;gap:2.5rem}.services-grid,.reviews-grid,.blog-grid{grid-template-columns:1fr 1fr}.why-grid{grid-template-columns:1fr 1fr}.hero-stats{display:none}.form-grid{grid-template-columns:1fr}.schedule-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:700px){.bk-card{grid-template-columns:1fr}.bk-actions{flex-direction:row;flex-wrap:wrap}.ap-stats{grid-template-columns:1fr 1fr}.rev-summary{grid-template-columns:1fr 1fr}.vin-box,.obd-box{flex-direction:column}.schedule-grid{grid-template-columns:repeat(2,1fr)}.inv-row{grid-template-columns:1fr}}
 @media(max-width:600px){.services-grid,.reviews-grid,.blog-grid,.why-grid{grid-template-columns:1fr}h2{font-size:32px}#ai-chat-widget{width:calc(100vw - 2rem)}}
 
@@ -1677,6 +1679,13 @@ function setLang(lang,btn){
 function toggleTheme(){
   const cur=document.documentElement.getAttribute('data-theme');
   document.documentElement.setAttribute('data-theme',cur==='dark'?'light':'dark');
+}
+function toggleNav(){
+  const nav=document.querySelector('nav');
+  if(!nav) return;
+  nav.classList.toggle('nav-open');
+  document.body.classList.toggle('nav-open');
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('nav-open');document.body.classList.remove('nav-open');}));
 }
 
 // ════════════════════════════════════════════════════════
